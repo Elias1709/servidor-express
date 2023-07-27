@@ -1,5 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
+const listViewRouter = require('./list-view-router');
+const listEditRouter = require('./list-edit-router');
+
+
+app.use(bodyParser.json());
+
+app.use('/tareas', listViewRouter);
+
+app.use('/tareas', listEditRouter);
 
 const taskList = [
   {
