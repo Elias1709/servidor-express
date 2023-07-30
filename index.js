@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const validarMetodoHTTP = require('./validarMetodoHTTP');
 
 const listViewRouter = require('./list-view-router');
 const listEditRouter = require('./list-edit-router');
 
 
 app.use(bodyParser.json());
+
+app.use(validarMetodoHTTP);
 
 app.use('/tareas', listViewRouter);
 

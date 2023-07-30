@@ -1,5 +1,8 @@
 const express = require('express');
 const listEditRouter = express.Router();
+const errorHandler = require('./error-handler');
+
+listEditRouter.use(errorHandler);
 
 let taskList = [
   {
