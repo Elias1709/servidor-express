@@ -20,14 +20,20 @@ const taskList = [
   },
 ];
 
-  listViewRouter.get('/completas', validarParametros, (req, res) => {
+listViewRouter.get('/obtener/:id', (req, res) => {
+  const id = req.params.id
+  const task = taskList.filter(task => task.id ==id)
+  res.send(task)
+})
+
+  listViewRouter.get('/completas', (req, res) => {
     console.log('GET request to /completas');
     const completedTasks = taskList.filter(task => task.isCompleted);
     res.json(completedTasks);
   });
 
 
-  listViewRouter.get('/incompletas', validarParametros, (req, res) => {
+  listViewRouter.get('/incompletas',  (req, res) => {
     console.log('GET request to /incompletas');
     const incompleteTasks = taskList.filter(task => !task.isCompleted);
     res.json(incompleteTasks);

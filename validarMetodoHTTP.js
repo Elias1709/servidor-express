@@ -8,5 +8,6 @@ function validarMetodoHTTP(req, res, next) {
     next();
   }
   
-  module.exports = validarMetodoHTTP;
+module.exports = validarMetodoHTTP;
   
+  //middleware a nivel de aplicacion, no maneja rutas
