@@ -23,13 +23,13 @@ listEditRouter.post('/crear-tarea', (req, res) => {
   const { id, isCompleted, description } = req.body;
   const newTask = { id, isCompleted, description };
   taskList.push(newTask);
-  res.json({ message: 'Tarea creada exitosamente', task: newTask });
+  res.status(200).json({ message: 'Tarea creada exitosamente', task: newTask });
 });
 
 listEditRouter.delete('/eliminar-tarea/:id', (req, res) => {
   const taskId = req.params.id;
   taskList = taskList.filter(task => task.id !== taskId);
-  res.json({ message: 'Tarea eliminada exitosamente', taskId });
+  res.status(200).json({ message: 'Tarea eliminada exitosamente', taskId });
 });
 
 listEditRouter.put('/actualizar-tarea/:id', (req, res) => {
@@ -41,11 +41,11 @@ listEditRouter.put('/actualizar-tarea/:id', (req, res) => {
         ...task,
         isCompleted: isCompleted !== undefined ? isCompleted : task.isCompleted,
         description: description !== undefined ? description : task.description,
-      };
+      }
     }
     return task;
   });
-  res.json({ message: 'Tarea actualizada exitosamente', taskId });
+  res.status(200).json({ message: 'Tarea actualizada exitosamente', taskId });
 });
 
 module.exports = listEditRouter;
